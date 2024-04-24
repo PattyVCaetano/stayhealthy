@@ -1,20 +1,19 @@
-import React, { useEffect } from 'react';
-
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
-function App() {
+import Landing_Page from './Components/Landing_Page/Landing_Page'; // Import the Landing_Page component
 
+function App() {
   return (
-    <div className="App">
-        <BrowserRouter>
-          <Navbar/>
-              <Routes>
-              </Routes>
-            
-        </BrowserRouter>
-       
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Landing_Page />} /> {/* Define the route for Landing_Page as the home route */}
+          {/* Add other routes here if needed */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

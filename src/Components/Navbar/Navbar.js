@@ -1,11 +1,12 @@
 import React from 'react';
 import './Navbar.css'; // Import Navbar.css file
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
         <nav>
             <div className="nav__logo">
-                <a href="/">StayHealthy 
+                <Link to="/">StayHealthy 
                     <svg xmlns="http://www.w3.org/2000/svg" height="26" width="26" viewBox="0 0 1000 1000" style={{ fill: '#3685fb' }}>
                         <title>Doctor With Stethoscope SVG icon</title>
                         <g>
@@ -16,7 +17,7 @@ const Navbar = () => {
                             </g>
                         </g>
                     </svg>
-                </a>
+                </Link>
                 <span>.</span>
             </div>
             <div className="nav__icon">
@@ -24,16 +25,16 @@ const Navbar = () => {
             </div>
             <ul className="nav__links">
                 <li className="link">
-                    <a href="../Landing_Page/LandingPage.html">Home</a>
+                    <Link to="/">Home</Link>
                 </li>
                 <li className="link">
-                    <a href="#">Appointments</a>
+                    <Link to="/appointments">Appointments</Link>
                 </li>
                 <li className="link">
-                    <a href="../Sign_Up/SignUp.html">Sign Up</a>
+                    <Link to="/signup">Sign Up</Link>
                 </li>
                 <li className="link">
-                    <a href="../Login/Login.html">Login</a>
+                    <Link to="/login">Login</Link>
                 </li>
             </ul>
         </nav>

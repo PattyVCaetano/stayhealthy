@@ -1,4 +1,3 @@
-// Navbar.js
 import React from 'react';
 import './Navbar.css'; // Import Navbar.css file
 import { Link } from 'react-router-dom';
@@ -22,7 +21,7 @@ const Navbar = () => {
                 <span>.</span>
             </div>
             <div className="nav__icon">
-                <i className="fa fa-times fa fa-bars"></i>
+                <i className="fa fa-bars"></i>
             </div>
             <ul className="nav__links">
                 <li className="link">

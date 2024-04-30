@@ -1,5 +1,5 @@
 // App.js
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import LandingPage from './Components/LandingPage/LandingPage';
@@ -7,10 +7,20 @@ import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 
 function App() {
+  // State to manage authentication
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // Function to handle logout
+  const handleLogout = () => {
+    // Perform logout actions (clear session/local storage, update state, etc.)
+    setIsLoggedIn(false);
+  };
+
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        {/* Pass isLoggedIn state and handleLogout function to Navbar */}
+        <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />

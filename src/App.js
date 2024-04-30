@@ -16,15 +16,23 @@ function App() {
     setIsLoggedIn(false);
   };
 
+  // Function to handle login (you'll need to implement this)
+  const handleLogin = () => {
+    // Perform login actions (set session/local storage, update state, etc.)
+    setIsLoggedIn(true);
+  };
+
   return (
     <Router>
       <div className="App">
         {/* Pass isLoggedIn state and handleLogout function to Navbar */}
         <Navbar isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
         <Routes>
+          {/* Define routes for different pages */}
           <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login handleLogin={handleLogin} />} />
           <Route path="/signup" element={<SignUp />} />
+          {/* Add more routes as needed for other pages */}
         </Routes>
       </div>
     </Router>

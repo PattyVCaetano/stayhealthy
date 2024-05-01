@@ -1,9 +1,6 @@
-// db.js
-
-export {};
-
 const mongoose = require('mongoose');
-const password = "MjE1MjAtcGF0cmlj"; // Replace this with your actual password
+
+const password = "MTcyMTUtcGF0cmlj"; // Replace this with your actual password
 const mongoURI = `mongodb://root:${password}@127.0.0.1:27017`;
 
 const connectToMongo = async (retryCount) => {
@@ -11,7 +8,7 @@ const connectToMongo = async (retryCount) => {
     const count = retryCount ?? 0;
     try {
         await mongoose.connect(mongoURI, { dbName: 'stayhealthybeta1'});
-        console.info('Connected to Mongo Successfully')
+        console.info('Connected to Mongo Successfully');
 
         return;
     } catch (error) {
@@ -23,10 +20,9 @@ const connectToMongo = async (retryCount) => {
             throw new Error('Unable to connect to Mongo!');
         }
 
-        console.info(`Retrying, retry count: ${nextRetryCount}`)
+        console.info(`Retrying, retry count: ${nextRetryCount}`);
 
         return await connectToMongo(nextRetryCount);
-
     }
 };
 

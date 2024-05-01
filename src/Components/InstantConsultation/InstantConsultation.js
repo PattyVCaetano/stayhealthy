@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import './InstantConsultation.css';
 import { useSearchParams } from 'react-router-dom'; // Removed unused import
 import FindDoctorSearchIC from './FindDoctorSearchIC/FindDoctorSearchIC';
 import DoctorCardIC from './DoctorCardIC/DoctorCardIC';
 
 const InstantConsultation = () => {
     const [searchParams] = useSearchParams();
+    const [doctors, setDoctors] = useState([]);
     const [filteredDoctors, setFilteredDoctors] = useState([]);
     const [isSearched, setIsSearched] = useState(false);
 
@@ -17,22 +19,36 @@ const InstantConsultation = () => {
                     const filtered = data.filter(doctor => doctor.speciality.toLowerCase() === searchParams.get('speciality').toLowerCase());
                     setFilteredDoctors(filtered);
                     setIsSearched(true);
-                    window.reload();
                 } else {
                     setFilteredDoctors([]);
                     setIsSearched(false);
                 }
+                setDoctors(data);
             })
             .catch(err => console.log(err));
-        };
-
+        }
+        
         getDoctorsDetails();
     }, [searchParams]);
+
+    const handleSearch = (searchText) => {
+        if (searchText === '') {
+            setFilteredDoctors([]);
+            setIsSearched(false);
+        } else {
+            const filtered = doctors.filter(
+                (doctor) =>
+                doctor.speciality.toLowerCase().includes(searchText.toLowerCase())
+            );
+            setFilteredDoctors(filtered);
+            setIsSearched(true);
+        }
+    };
 
     return (
         <center>
             <div className="searchpage-container">
-                <FindDoctorSearchIC />
+                <FindDoctorSearchIC onSearch={handleSearch} />
                 <div className="search-results-container">
                     {isSearched ? (
                         <center>

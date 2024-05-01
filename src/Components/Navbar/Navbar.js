@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { FaUserMd } from 'react-icons/fa'; // Importing the FaUserMd icon
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -40,7 +40,8 @@ const Navbar = () => {
     <nav>
       <div className="nav__logo">
         <Link to="/">
-        StayHealthy <i style={{color:'#2190FF'}} className="fa fa-user-md"></i></Link>
+          StayHealthy <FaUserMd style={{color:'#2190FF'}} />
+        </Link>
         <span>.</span>
       </div>
       <div className="nav__icon" onClick={handleClick}>

@@ -5,6 +5,7 @@ import Navbar from './Components/Navbar/Navbar';
 import LandingPage from './Components/LandingPage/LandingPage';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
+import InstantConsultation from './Components/InstantConsultation/InstantConsultation'; // Import InstantConsultation component
 
 function App() {
   // State to manage authentication
@@ -32,6 +33,8 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login handleLogin={handleLogin} />} />
           <Route path="/signup" element={<SignUp />} />
+          {/* Add a new route for InstantConsultation */}
+          <Route path="/instant-consultation" element={<InstantConsultation />} />
           {/* Add more routes as needed for other pages */}
         </Routes>
       </div>

@@ -59,6 +59,12 @@ const Navbar = () => {
         <li className="link">
          <Link to="/reviews">Reviews</Link>
         </li>
+        {/* Add button for instant consultation */}
+        <li className="link">
+          <Link to="/instant-consultation">
+            <button className="btn1">Instant Consultation</button>
+          </Link>
+        </li>
         {isLoggedIn ? (
           <>
             <li className="link welcome-user">Welcome, {userName}</li>

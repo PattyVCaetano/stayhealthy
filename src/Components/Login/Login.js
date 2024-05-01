@@ -11,7 +11,7 @@ const Login = () => {
     if (sessionStorage.getItem("auth-token")) {
       navigate("/")
     }
-  }, []);
+  }, [navigate]);
 
   const login = async (e) => {
     e.preventDefault();
@@ -40,6 +40,11 @@ const Login = () => {
         alert(json.error);
       }
     }
+  };
+
+  const resetForm = () => {
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -74,6 +79,7 @@ const Login = () => {
               </div>
               <div className="btn-group">
                 <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light">Login</button>
+                <button type="button" className="btn btn-danger mb-2 waves-effect waves-light" onClick={resetForm}>Reset</button>
               </div>
             </form>
           </div>
@@ -84,3 +90,4 @@ const Login = () => {
 }
 
 export default Login;
+

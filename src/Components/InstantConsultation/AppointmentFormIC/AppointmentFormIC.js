@@ -1,19 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit }) => {
     const [name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [selectedSlot, setSelectedSlot] = useState(null);
+    const [selectedDate, setSelectedDate] = useState('');
   
     const handleSlotSelection = (slot) => {
       setSelectedSlot(slot);
     };
+
+    const handleDateSelection = (date) => {
+      setSelectedDate(date);
+    };
   
     const handleFormSubmit = (e) => {
       e.preventDefault();
-      onSubmit({ name, phoneNumber });
+      onSubmit({ name, phoneNumber, selectedSlot, selectedDate });
       setName('');
       setPhoneNumber('');
+      setSelectedSlot(null);
+      setSelectedDate('');
     };
   
     return (
@@ -38,9 +45,29 @@ const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit }) => {
             required
           />
         </div>
+        <div className="form-group">
+          <label htmlFor="date">Appointment Date:</label>
+          <input
+            type="date"
+            id="date"
+            value={selectedDate}
+            onChange={(e) => setSelectedDate(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="time">Appointment Time:</label>
+          <input
+            type="time"
+            id="time"
+            value={selectedSlot}
+            onChange={(e) => setSelectedSlot(e.target.value)}
+            required
+          />
+        </div>
         <button type="submit">Book Now</button>
       </form>
     );
-  };
+};
 
-export default AppointmentFormIC
+export default AppointmentFormIC;

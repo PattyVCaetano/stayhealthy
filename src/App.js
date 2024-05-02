@@ -1,11 +1,13 @@
-// App.js
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import LandingPage from './Components/LandingPage/LandingPage';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
-import InstantConsultation from './Components/InstantConsultation/InstantConsultation'; // Import InstantConsultation component
+import BookingConsultation from './Components/BookingConsultation'; // Updated import path
+import FindDoctorSearch from './Components/FindDoctorSearch'; // Import FindDoctorSearch component
+import DoctorCard from './Components/DoctorCard'; // Import DoctorCard component
+import AppointmentForm from './Components/AppointmentForm'; // Import AppointmentForm component
 
 function App() {
   // State to manage authentication
@@ -33,8 +35,12 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login handleLogin={handleLogin} />} />
           <Route path="/signup" element={<SignUp />} />
-          {/* Add a new route for InstantConsultation */}
-          <Route path="/instant-consultation" element={<InstantConsultation />} />
+          {/* Add a new route for BookingConsultation */}
+          <Route path="/booking-consultation" element={<BookingConsultation />} />
+          {/* Add routes for FindDoctorSearch, DoctorCard, and AppointmentForm */}
+          <Route path="/find-doctor" element={<FindDoctorSearch />} />
+          <Route path="/doctor-card" element={<DoctorCard />} />
+          <Route path="/appointment-form" element={<AppointmentForm />} />
           {/* Add more routes as needed for other pages */}
         </Routes>
       </div>

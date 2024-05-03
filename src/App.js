@@ -5,9 +5,10 @@ import LandingPage from './Components/LandingPage/LandingPage';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import BookingConsultation from './Components/BookingConsultation'; // Updated import path
-import FindDoctorSearch from './Components/FindDoctorSearch'; // Import FindDoctorSearch component
-import DoctorCard from './Components/DoctorCard'; // Import DoctorCard component
-import AppointmentForm from './Components/AppointmentForm'; // Import AppointmentForm component
+import FindDoctorSearchIC from './Components/InstantConsultation/FindDoctorSearchIC/FindDoctorSearchIC'; // Updated import path
+import DoctorCardIC from './Components/InstantConsultation/DoctorCardIC/DoctorCardIC'; // Updated import path
+import AppointmentFormIC from './Components/InstantConsultation/AppointmentFormIC/AppointmentFormIC'; // Updated import path
+import InstantConsultation from './Components/InstantConsultation/InstantConsultation'; // Import InstantConsultation component
 
 function App() {
   // State to manage authentication
@@ -38,9 +39,11 @@ function App() {
           {/* Add a new route for BookingConsultation */}
           <Route path="/booking-consultation" element={<BookingConsultation />} />
           {/* Add routes for FindDoctorSearch, DoctorCard, and AppointmentForm */}
-          <Route path="/find-doctor" element={<FindDoctorSearch />} />
-          <Route path="/doctor-card" element={<DoctorCard />} />
-          <Route path="/appointment-form" element={<AppointmentForm />} />
+          <Route path="/find-doctor" element={<FindDoctorSearchIC />} />
+          <Route path="/doctor-card" element={<DoctorCardIC />} />
+          <Route path="/appointment-form" element={<AppointmentFormIC />} />
+          {/* Add a route for InstantConsultation */}
+          <Route path="/instant-consultation" element={<InstantConsultation />} />
           {/* Add more routes as needed for other pages */}
         </Routes>
       </div>

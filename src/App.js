@@ -9,6 +9,7 @@ import FindDoctorSearchIC from './Components/InstantConsultation/FindDoctorSearc
 import DoctorCardIC from './Components/InstantConsultation/DoctorCardIC/DoctorCardIC'; // Updated import path
 import AppointmentFormIC from './Components/InstantConsultation/AppointmentFormIC/AppointmentFormIC'; // Updated import path
 import InstantConsultation from './Components/InstantConsultation/InstantConsultation'; // Import InstantConsultation component
+import ReviewForm from './Components/ReviewForm/ReviewForm'; // Import ReviewForm component
 
 function App() {
   // State to manage authentication
@@ -44,6 +45,8 @@ function App() {
           <Route path="/appointment-form" element={<AppointmentFormIC />} />
           {/* Add a route for InstantConsultation */}
           <Route path="/instant-consultation" element={<InstantConsultation />} />
+          {/* Add a route for ReviewForm */}
+          <Route path="/reviews" element={<ReviewForm />} />
           {/* Add more routes as needed for other pages */}
         </Routes>
       </div>

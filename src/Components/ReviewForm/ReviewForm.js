@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GiveReviews from './GiveReviews';
 import Popup from 'reactjs-popup';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import "./ReviewForm.css"
 
 const ReviewForm = () => {
     const [reviewData, setReviewData] = useState({});
+    const [isFeedbackSubmitted, setIsFeedbackSubmitted] = useState({});
 
     const reportData = [
         {
@@ -34,14 +35,12 @@ const ReviewForm = () => {
             ...prevReviewData,
             [serialNumber]: review
         }));
+        setIsFeedbackSubmitted((prevSubmitted) => ({
+            ...prevSubmitted,
+            [serialNumber]: true
+        }));
     };
-    const navigate = useNavigate();
-    useEffect(() => {
-        //   const authtoken = sessionStorage.getItem("auth-token");
-        //   if (!authtoken) {
-        //       navigate("/login");
-        //   }
-    }, [])
+
     return (
         <div style={{ marginTop: '10%' }} className="reviews-container">
             <h1>Reviews</h1>
@@ -89,8 +88,8 @@ const ReviewForm = () => {
                                         )}
                                     </Popup>
                                 ) : (
-                                    <button className="give-review-button" disabled>
-                                        Give Review
+                                    <button className="give-review-button" disabled={isFeedbackSubmitted[report.serialNumber]}>
+                                        {isFeedbackSubmitted[report.serialNumber] ? 'Review Given' : 'Give Review'}
                                     </button>
                                 )}
                             </td>

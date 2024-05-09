@@ -1,15 +1,19 @@
+// Import React and useState from 'react'
 import React, { useState } from 'react';
+// Import necessary components and styles
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import LandingPage from './Components/LandingPage/LandingPage';
 import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
-import BookingConsultation from './Components/BookingConsultation'; // Updated import path
-import FindDoctorSearchIC from './Components/InstantConsultation/FindDoctorSearchIC/FindDoctorSearchIC'; // Updated import path
-import DoctorCardIC from './Components/InstantConsultation/DoctorCardIC/DoctorCardIC'; // Updated import path
-import AppointmentFormIC from './Components/InstantConsultation/AppointmentFormIC/AppointmentFormIC'; // Updated import path
-import InstantConsultation from './Components/InstantConsultation/InstantConsultation'; // Import InstantConsultation component
-import ReviewForm from './Components/ReviewForm/ReviewForm'; // Import ReviewForm component
+import BookingConsultation from './Components/BookingConsultation';
+import FindDoctorSearchIC from './Components/InstantConsultation/FindDoctorSearchIC/FindDoctorSearchIC';
+import DoctorCardIC from './Components/InstantConsultation/DoctorCardIC/DoctorCardIC';
+import AppointmentFormIC from './Components/InstantConsultation/AppointmentFormIC/AppointmentFormIC';
+import InstantConsultation from './Components/InstantConsultation/InstantConsultation';
+import ReviewForm from './Components/ReviewForm/ReviewForm';
+// Import ProfileCard component
+import ProfileCard from './Components/ProfileCard/ProfileCard'; // Adjust the import path as necessary
 
 function App() {
   // State to manage authentication
@@ -47,6 +51,8 @@ function App() {
           <Route path="/instant-consultation" element={<InstantConsultation />} />
           {/* Add a route for ReviewForm */}
           <Route path="/reviews" element={<ReviewForm />} />
+          {/* Add a route for ProfileCard */}
+          <Route path="/profile" element={<ProfileCard />} />
           {/* Add more routes as needed for other pages */}
         </Routes>
       </div>

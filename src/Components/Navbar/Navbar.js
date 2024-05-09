@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { FaUserMd } from 'react-icons/fa'; // Importing the FaUserMd icon
+import { Link, useNavigate } from "react-router-dom";
+import { FaUserMd } from 'react-icons/fa';
 import "./Navbar.css";
 
 const Navbar = () => {
     const [click, setClick] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userName, setUserName] = useState("");
+    const navigate = useNavigate();
 
     const handleClick = () => setClick(!click);
 
@@ -30,7 +31,6 @@ const Navbar = () => {
       const storedEmail = sessionStorage.getItem("email");
       if (storedEmail) {
             setIsLoggedIn(true);
-            // Extract username from email
             const username = storedEmail.split("@")[0];
             setUserName(username);
           }
@@ -52,28 +52,33 @@ const Navbar = () => {
           <Link to="/">Home</Link>
         </li>
         <li className="link">
-          <Link to="/search/doctors">Appointments</Link>
-        </li>
-        <li className="link">
           <Link to="/healthblog">Health Blog</Link>
         </li>
         <li className="link">
           <Link to="/reviews">Reviews</Link>
         </li>
         <li className="link">
-          <Link to="/instant-consultation">
+          <Link to="/instant-consultation" onClick={() => navigate("/search/doctors")}>
             <button className="btn1">Booking</button>
           </Link>
         </li>
         {isLoggedIn ? (
           <>
-            <li className="link welcome-user">Welcome, {userName}</li>
-            <li className="link">
-              <button className="btn2" onClick={handleLogout}>
-                Logout
-              </button>
+            <li className="link dropdown">
+              <span className="welcome-user" onClick={handleClick}>
+                Welcome, {userName} <i className="fa fa-caret-down"></i>
+              </span>
+              <ul className={click ? 'dropdown-menu active' : 'dropdown-menu'}>
+                <li>
+                  <Link to="/profile">Profile</Link>
+                </li>
+                <li>
+                  <button className="btn2" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+              </ul>
             </li>
-            
           </>
         ) : (
           <>

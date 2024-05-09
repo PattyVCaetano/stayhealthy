@@ -7,10 +7,12 @@ const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit }) => {
     const [selectedDate, setSelectedDate] = useState('');
   
     const handleSlotSelection = (slot) => {
+      // Implement logic for handling slot selection
       setSelectedSlot(slot);
     };
 
     const handleDateSelection = (date) => {
+      // Implement logic for handling date selection
       setSelectedDate(date);
     };
   
@@ -51,7 +53,7 @@ const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit }) => {
             type="date"
             id="date"
             value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
+            onChange={(e) => handleDateSelection(e.target.value)}
             required
           />
         </div>
@@ -61,7 +63,7 @@ const AppointmentFormIC = ({ doctorName, doctorSpeciality, onSubmit }) => {
             type="time"
             id="time"
             value={selectedSlot}
-            onChange={(e) => setSelectedSlot(e.target.value)}
+            onChange={(e) => handleSlotSelection(e.target.value)}
             required
           />
         </div>

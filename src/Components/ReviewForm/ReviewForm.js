@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import GiveReviews from './GiveReviews';
 import Popup from 'reactjs-popup';
 import { useNavigate } from 'react-router-dom';

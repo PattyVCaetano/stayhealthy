@@ -62,7 +62,7 @@ const Login = () => {
             <form onSubmit={login}>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
+                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" style={{ width: '100%' }} />
               </div>
               <div className="form-group">
                 <label htmlFor="password">Password</label>
@@ -75,11 +75,12 @@ const Login = () => {
                   className="form-control"
                   placeholder="Enter your password"
                   aria-describedby="helpId"
+                  style={{ width: '100%' }}
                 />
               </div>
               <div className="btn-group">
-                <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light">Login</button>
-                <button type="button" className="btn btn-danger mb-2 waves-effect waves-light" onClick={resetForm}>Reset</button>
+                <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light" style={{ width: '100%' }}>Login</button>
+                <button type="button" className="btn btn-danger mb-2 waves-effect waves-light" onClick={resetForm} style={{ width: '100%' }}>Reset</button>
               </div>
             </form>
           </div>
@@ -90,4 +91,3 @@ const Login = () => {
 }
 
 export default Login;
-

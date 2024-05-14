@@ -8,6 +8,7 @@ const SignUp = () => {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
+    const [role, setRole] = useState('');
     const [showErr, setShowErr] = useState('');
     const [passwordLengthError, setPasswordLengthError] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -46,6 +47,7 @@ const SignUp = () => {
                     email: email,
                     password: password,
                     phone: phone,
+                    role: role // Include role in the request body
                 }),
             });
 
@@ -89,20 +91,28 @@ const SignUp = () => {
                 <div className="signup-form">
                     <form method="POST" onSubmit={register}>
                         <div className="form-group">
+                            <label htmlFor="role">Role</label>
+                            <select value={role} onChange={(e) => setRole(e.target.value)} name="role" id="role" className="form-control" required>
+                                <option value="">Select Role</option>
+                                <option value="doctor">Doctor</option>
+                                <option value="patient">Patient</option>
+                            </select>
+                        </div>
+                        <div className="form-group">
                             <label htmlFor="name">Name</label>
-                            <input value={name} type="text" onChange={(e) => setName(e.target.value)} name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" required autoComplete="name" />
+                            <input value={name} type="text" onChange={(e) => setName(e.target.value)} name="name" id="name" className="form-control" placeholder="Enter your name" aria-describedby="helpId" required autoComplete="name" style={{ width: '100%' }} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="phone">Phone</label>
-                            <input value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" name="phone" id="phone" className="form-control" placeholder="Enter your phone number" aria-describedby="helpId" maxLength="10" required autoComplete="tel" />
+                            <input value={phone} onChange={(e) => setPhone(e.target.value)} type="tel" name="phone" id="phone" className="form-control" placeholder="Enter your phone number" aria-describedby="helpId" maxLength="10" required autoComplete="tel" style={{ width: '100%' }} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
-                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="emailHelpId" required autoComplete="email" />
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="emailHelpId" required autoComplete="email" style={{ width: '100%' }} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="password">Password</label>
-                            <input value={password} onChange={(e) => setPassword(e.target.value)} type='password' name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" required autoComplete="new-password" />
+                            <input value={password} onChange={(e) => setPassword(e.target.value)} type='password' name="password" id="password" className="form-control" placeholder="Enter your password" aria-describedby="helpId" required autoComplete="new-password" style={{ width: '100%' }} />
                             {passwordLengthError && password.length < 8 && (
                                 <div className="err" style={{ color: 'red' }}>Password length must be 8 or more</div>
                             )}

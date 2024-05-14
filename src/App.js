@@ -11,7 +11,9 @@ import AppointmentFormIC from './Components/InstantConsultation/AppointmentFormI
 import InstantConsultation from './Components/InstantConsultation/InstantConsultation';
 import ReviewForm from './Components/ReviewForm/ReviewForm';
 import ProfileCard from './Components/ProfileCard/ProfileCard'; 
-import ProfileForm from './Components/ProfileCard/ProfileForm'; // Import ProfileForm component
+import ProfileForm from './Components/ProfileCard/ProfileForm'; 
+// Import the Notification component
+import Notification from './Components/Notification/Notification';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -39,8 +41,9 @@ function App() {
           <Route path="/instant-consultation" element={<InstantConsultation />} />
           <Route path="/reviews" element={<ReviewForm />} />
           <Route path="/profile" element={<ProfileCard />} />
-          {/* Define a route for ProfileForm */}
           <Route path="/profile/edit" element={<ProfileForm />} />
+          {/* Add a route for the Notification component */}
+          <Route path="/notification" element={<Notification />} />
         </Routes>
       </div>
     </Router>

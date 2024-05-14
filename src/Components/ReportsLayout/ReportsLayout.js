@@ -18,16 +18,21 @@ const ReportsLayout = () => {
             serialNumber: 1,
             doctorName: 'Dr. Ramesh',
             doctorSpeciality: 'Cardiology',
-            reportUrl: '../patient_report_1.pdf' // Example URL for report 1
+            reportUrl: process.env.PUBLIC_URL + '/patient_report_1.pdf' // Example URL for report 1
         },
         {
             serialNumber: 2,
             doctorName: 'Dr. Harini',
             doctorSpeciality: 'Dermatology',
-            reportUrl: '../patient_report_2.pdf' // Example URL for report 2
+            reportUrl: process.env.PUBLIC_URL + '/patient_report_2.pdf' // Example URL for report 2
         },
         // Add more report data objects as needed 
     ];
+
+    // Function to handle report download
+    const handleDownload = (url) => {
+        window.open(url, '_blank');
+    };
 
     return (
         <div className="reports-container">
@@ -50,14 +55,14 @@ const ReportsLayout = () => {
                             <td>{report.doctorName}</td>
                             <td>{report.doctorSpeciality}</td>
                             <td>
-                                <a href={report.reportUrl} target='_blank' className="report-link" rel="noreferrer">
+                                <button onClick={() => window.open(report.reportUrl, '_blank')} className="report-link">
                                     View Report
-                                </a>
+                                </button>
                             </td>
                             <td>
-                                <a href={report.reportUrl} target='_blank' download className="report-link" rel="noreferrer">
+                                <button onClick={() => handleDownload(report.reportUrl)} className="report-link">
                                     Download Report
-                                </a>
+                                </button>
                             </td>
                         </tr>
                     ))}

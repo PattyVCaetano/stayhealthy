@@ -13,36 +13,32 @@ const ProfileForm = () => {
     if (!authtoken) {
       navigate("/login");
     } else {
+      const fetchUserProfile = async () => {
+        try {
+          const email = sessionStorage.getItem("email");
+
+          const response = await fetch(`${API_URL}/api/auth/user`, {
+            headers: {
+              "Authorization": `Bearer ${authtoken}`,
+              "Email": email,
+            },
+          });
+
+          if (response.ok) {
+            const user = await response.json();
+            setUserDetails(user);
+            setUpdatedDetails(user);
+          } else {
+            throw new Error("Failed to fetch user profile");
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
       fetchUserProfile();
     }
   }, [navigate]);
-
-  const fetchUserProfile = async () => {
-    try {
-      const authtoken = sessionStorage.getItem("auth-token");
-      const email = sessionStorage.getItem("email");
-
-      if (!authtoken) {
-        navigate("/login");
-      } else {
-        const response = await fetch(`${API_URL}/api/auth/user`, {
-          headers: {
-            "Authorization": `Bearer ${authtoken}`,
-            "Email": email,
-          },
-        });
-        if (response.ok) {
-          const user = await response.json();
-          setUserDetails(user);
-          setUpdatedDetails(user);
-        } else {
-          throw new Error("Failed to fetch user profile");
-        }
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   const handleEdit = () => {
     setEditMode(true);

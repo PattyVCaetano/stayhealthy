@@ -117,7 +117,7 @@ const SignUp = () => {
                                 <div className="err" style={{ color: 'red' }}>Password length must be 8 or more</div>
                             )}
                         </div>
-                        {showErr && <div className="err" style={{ color: 'red' }}>{showErr}</div>}
+                        {showErr && <div className="err" style={{ color: 'red' }}>{showErr.msg}</div>}
                         <div className="btn-group">
                             <button type="submit" className="btn btn-primary mb-2 mr-1 waves-effect waves-light" disabled={loading}>{loading ? 'Loading...' : 'Submit'}</button>
                             <button type="reset" className="btn btn-danger mb-2 waves-effect waves-light">Reset</button>
